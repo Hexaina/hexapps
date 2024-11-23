@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+<script>
+
+const Note = document.getElementById('Note');
+
+function resetNote(){
+  if (confirm("do you want to clear the note?") == true){
+    document.getElementById("Note").value = "";
+  }
+}
+
+</script>
+
+<style>
+body {
+  background-color: #2a1729;
+  color: #ef9ee8;
+}
+a {
+  color: #0074FF;
+}
+h1 {
+  color: #AA00FF;
+}
+small {
+  color: #FFC5FC;
+}
+button {
+  background-color: #C157FF;
+  color: #942395;
+  border-color: #FC36FF;
+  border-style: solid;
+  border-radius: 6px;
+}
+button:active {
+  border-color: #AA48AD;
+}
+bold {
+  color: #EC2CFF
+}
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+textarea {
+  background-color: #3b1643;
+  color: #eccde9;
+}
+</style>
+
+</head>
+
+<body>
+<h1>HexNote</h1>
+<textarea id="Note" name="Note" rows="30" cols="168"></textarea><br>
+<button onclick="resetNote()">reset</button>
+<!random info: >
+</body>
