@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+<script>
+
+let total = 0
+
+function randomNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function roll(){
+  let num = parseInt(document.getElementById("diceNumArea").value);
+  let min = parseInt(document.getElementById("diceMinArea").value);
+  let max = parseInt(document.getElementById("diceMaxArea").value);
+
+  let tempTotal = 0
+  let list = []
+  for (let i = 0; i < num; i++) {
+    let result = randomNum(min, max)
+    list.push(result)
+    tempTotal += result;
+    total += result;
+  }
+
+  document.getElementById("total").innerHTML = total;
+  document.getElementById("tempTotal").innerHTML = tempTotal;
+  document.getElementById("rollsList").innerHTML = `${list[0]}, ${list[1]}, ${list[2]}, ${list[3]}, ${list[4]}`;
+}
+
+function tentionRoll(){
+  wait(2500).then(() => {
+    roll()
+  })
+}
+
+function resetTotal(){
+  total = 0
+  document.getElementById("total").innerHTML = "waiting...";
+}
+
+</script>
+
+<style>
+body {
+  background-color: #2a1729;
+  color: #ef9ee8;
+}
+a {
+  color: #0074FF;
+}
+h1 {
+  color: #AA00FF;
+}
+small {
+  color: #FFC5FC;
+}
+button {
+  background-color: #C157FF;
+  color: #942395;
+  border-color: #FC36FF;
+  border-style: solid;
+  border-radius: 6px;
+}
+button:active {
+  border-color: #AA48AD;
+}
+bold {
+  color: #EC2CFF
+}
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+textarea {
+  background-color: #3b1643;
+  color: #eccde9;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Hexedice</h1>
+<a href="index.html">Home</a><br>
+
+roll <textarea id="diceNumArea" rows="1" cols="6">ammount</textarea> 
+D <textarea id="diceMinArea" rows="1" cols="3">min</textarea> 
+to <textarea id="diceMaxArea" rows="1" cols="3">max</textarea> 
+<button onclick="roll()">GO!</button>
+<button onclick="tentionRoll()">tention!!!</button><br>
+<br>
+results:<br>
+total: <span id="total">waiting...</span> 
+<button onclick="resetTotal()">reset</button><br>
+temp total: <span id="tempTotal">waiting...</span><br>
+dice rolls (up to five): [<span id="rollsList">waiting...</span>]<br>
+<br>
+
+<!--random info: ✓-->
+</body>
